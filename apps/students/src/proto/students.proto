@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package students;
+
+service StudentsService {
+  rpc GetStudents(Empty) returns (stream Response) {}
+}
+
+message Empty {}
+
+message Response {
+  repeated Student students = 1;
+}
+
+message Student {
+  string _id = 1;
+  string name = 2;
+  string dateOfBirth = 3;
+  int32 level = 4;
+  repeated SchoolSubject schoolSubjects = 5;
+}
+
+message SchoolSubject {
+  string name = 1;
+  float score = 2;
+}
